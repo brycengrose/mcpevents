@@ -18,7 +18,8 @@
 /* Per-slide framing: anchor the kept part of each image */
 .hero-slider .slide.crop-top img    { object-position: bottom; }
 .hero-slider .slide.crop-center img { object-position: center; }
-.hero-slider .slide.crop-bottom img { object-position: top; }
+/* Slide 11 (Commercial): anchors to the top-left, crops bottom/right as needed */
+.hero-slider .slide.crop-bottom img { object-position: left top; }
 
 /* Homepage: full-bleed hero at the very top of the screen */
 body.is-home .hero-slider {
