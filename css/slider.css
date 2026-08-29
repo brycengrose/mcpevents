@@ -192,4 +192,28 @@ body.is-home .slider-counter {
     transform: translateX(-50%);
     bottom: clamp(1rem, 3vw, 1.6rem);
   }
+
+  /* Compact mobile caption so it doesn't swallow the image */
+  .hero-slider .caption {
+    max-width: none;
+    padding-top: 1rem;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    padding-bottom: calc(clamp(1rem, 3vw, 1.6rem) + 1.6rem);
+  }
+  .hero-slider .caption .kicker {
+    margin-bottom: 0.45rem;
+    font-size: 0.62rem;
+  }
+  .hero-slider .caption h2 {
+    font-size: clamp(1.4rem, 6.2vw, 1.9rem);
+    line-height: 1;
+  }
+  .hero-slider .caption p { display: none; }
+  .hero-slider .caption .go {
+    margin-top: 0.8rem;
+    font-size: 0.66rem;
+    gap: 0.45rem;
+  }
+  .hero-slider .caption .go svg { width: 13px; height: 13px; }
 }
