@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Homepage hero slider — MCP Events
+   ========================================================================== */
+
+.hero-slider {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  height: 100vh;
+  height: 100svh;
+  min-height: 420px;
+  margin-top: 0;
+}
+
+/* Per-slide framing: anchor the kept part of each image */
+.hero-slider .slide.crop-top img    { object-position: bottom; }
+.hero-slider .slide.crop-center img { object-position: center; }
+.hero-slider .slide.crop-bottom img { object-position: top; }
+
+/* Homepage: full-bleed hero at the very top of the screen */
+body.is-home .hero-slider {
+  margin-top: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.is-home .slider-counter {
+  top: calc(clamp(1.4rem, 4vw, 2.4rem) + 3.6rem);
+}
+
+.hero-slider .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s var(--ease), visibility 0.9s var(--ease);
+}
+.hero-slider .slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-slider .slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.78) contrast(1.04) saturate(1.05);
+  animation: kenburns 22s var(--ease) forwards;
+}
+.hero-slider .slide.active img { animation: kenburns 22s var(--ease) forwards; }
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.035); }
+}
+
+.hero-slider .slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12,12,16,0.18) 0%, transparent 35%, rgba(12,12,16,0.92) 100%),
+    linear-gradient(90deg, rgba(12,12,16,0.55) 0%, transparent 55%);
+}
+
+.hero-slider .caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  padding-top: clamp(1.4rem, 4vw, 3rem);
+  padding-right: clamp(1.4rem, 4vw, 3rem);
+  padding-left: clamp(1.4rem, 4vw, 3rem);
+  padding-bottom: calc(clamp(1.4rem, 4vw, 3rem) + 1.1rem);
+  max-width: 58ch;
+  transform: translateY(22px);
+  transition: transform 0.8s var(--ease) 0.15s;
+}
+.hero-slider .slide.active .caption { transform: translateY(0); }
+
+.hero-slider .caption .kicker { margin-bottom: 0.7rem; }
+.hero-slider .caption h2 {
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+.hero-slider .caption h2 a { color: var(--ink); }
+.hero-slider .caption h2 a:hover { color: var(--gold-bright); }
+.hero-slider .caption p {
+  margin: 0.85rem 0 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+  max-width: 46ch;
+}
+.hero-slider .caption .go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 1.5rem;
+}
+.hero-slider .caption .go svg { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
+.hero-slider .caption .go:hover svg { transform: translateX(5px); }
+
+/* Controls */
+.slider-arrows {
+  position: absolute;
+  right: clamp(1.4rem, 4vw, 3rem);
+  bottom: clamp(1.4rem, 4vw, 3rem);
+  z-index: 5;
+  display: flex;
+  gap: 0.55rem;
+}
+.slider-arrows button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(23, 23, 31, 0.55);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.slider-arrows button:hover { background: var(--gold); color: #17120a; border-color: transparent; transform: scale(1.06); }
+.slider-arrows svg { width: 18px; height: 18px; }
+
+.slider-counter {
+  position: absolute;
+  top: clamp(1.4rem, 4vw, 2.4rem);
+  right: clamp(1.4rem, 4vw, 3rem);
+  z-index: 5;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  color: rgba(239, 233, 221, 0.92);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+.slider-counter b { color: var(--gold); font-weight: 400; font-size: 1.5rem; }
+
+.slider-dots {
+  position: absolute;
+  left: clamp(1.4rem, 4vw, 3rem);
+  bottom: clamp(1.4rem, 4vw, 3rem);
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+}
+.slider-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(239, 233, 221, 0.35);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s var(--ease);
+}
+.slider-dots button:hover { background: rgba(239, 233, 221, 0.7); }
+.slider-dots button.active {
+  background: var(--gold);
+  transform: scale(1.25);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider .slide img,
+  .hero-slider .slide.active img { animation: none; }
+  .ticker-track { animation: none; }
+}
+
+/* Small screens: move arrows next to dots, tighten */
+@media (max-width: 640px) {
+  body.is-home .slider-arrows { top: calc(clamp(1.4rem, 4vw, 2.4rem) + 3.6rem); }
+  .hero-slider { height: auto; aspect-ratio: 16 / 10.4; min-height: 220px; }
+  .slider-arrows { bottom: auto; top: clamp(1.4rem, 4vw, 2.4rem); right: 1rem; }
+  .slider-counter { top: clamp(1.4rem, 4vw, 2.4rem); left: 1rem; right: auto; }
+  .slider-dots {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: clamp(1rem, 3vw, 1.6rem);
+  }
+}
