@@ -222,7 +222,7 @@ body.is-home .slider-counter {
     -webkit-line-clamp: 2;
     overflow: hidden;
     margin-top: 0.5rem;
-    font-size: 0.82rem;
+    font-size: 0.6rem;
     line-height: 1.35;
     max-width: none;
   }
