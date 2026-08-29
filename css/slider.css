@@ -63,8 +63,8 @@ body.is-home .slider-counter {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(12,12,16,0.18) 0%, transparent 35%, rgba(12,12,16,0.92) 100%),
-    linear-gradient(90deg, rgba(12,12,16,0.55) 0%, transparent 55%);
+    linear-gradient(180deg, rgba(12,12,16,0.14) 0%, transparent 38%, rgba(12,12,16,0.86) 100%),
+    linear-gradient(90deg, rgba(12,12,16,0.45) 0%, transparent 52%);
 }
 
 .hero-slider .caption {
@@ -82,7 +82,6 @@ body.is-home .slider-counter {
 }
 .hero-slider .slide.active .caption { transform: translateY(0); }
 
-.hero-slider .caption .kicker { margin-bottom: 0.7rem; }
 .hero-slider .caption h2 {
   font-size: clamp(2.2rem, 6vw, 4.2rem);
   line-height: 0.95;
@@ -200,10 +199,6 @@ body.is-home .slider-counter {
     padding-left: 1.1rem;
     padding-right: 1.1rem;
     padding-bottom: calc(clamp(1rem, 3vw, 1.6rem) + 1.6rem);
-  }
-  .hero-slider .caption .kicker {
-    margin-bottom: 0.45rem;
-    font-size: 0.62rem;
   }
   .hero-slider .caption h2 {
     font-size: clamp(1.4rem, 6.2vw, 1.9rem);
