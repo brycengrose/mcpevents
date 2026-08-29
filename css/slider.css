@@ -15,11 +15,10 @@
   margin-top: 0;
 }
 
-/* Brand slide: the MCP Productions logo leads the show */
+/* Brand slide: original site background with the MCP Productions logo lead */
 .hero-slider .slide.logo-slide {
   background:
-    radial-gradient(ellipse 62% 56% at 50% 44%, rgba(212, 175, 55, 0.10) 0%, rgba(212, 175, 55, 0) 62%),
-    linear-gradient(rgba(9, 9, 13, 0.76), rgba(6, 6, 9, 0.94)),
+    linear-gradient(180deg, rgba(7, 7, 11, 0.34) 0%, rgba(7, 7, 11, 0.55) 45%, rgba(7, 7, 11, 0.82) 100%),
     url("../images/main-bg3.jpg") center / cover no-repeat;
 }
 .hero-slider .slide.logo-slide::after { background: none; }
@@ -27,10 +26,10 @@
   position: absolute;
   inset: 0;
   margin: auto;
-  width: min(74%, 780px);
+  width: min(46%, 540px);
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 10px 44px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 6px 30px rgba(0, 0, 0, 0.5));
   animation: logobreathe 22s var(--ease) forwards;
 }
 @keyframes logobreathe {
@@ -206,6 +205,7 @@ body.is-home .slider-counter {
 /* Small screens: move arrows next to dots, tighten */
 @media (max-width: 640px) {
   body.is-home .slider-arrows { top: calc(clamp(1.4rem, 4vw, 2.4rem) + 3.6rem); }
+  .hero-slider .slide.logo-slide img { width: min(58%, 300px); }
   .hero-slider { height: auto; aspect-ratio: 16 / 10.4; min-height: 220px; }
   .slider-arrows { bottom: auto; top: clamp(1.4rem, 4vw, 2.4rem); right: 1rem; }
   body.is-home .slider-counter,
