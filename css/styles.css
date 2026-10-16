@@ -30,6 +30,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -46,6 +48,7 @@ body {
   background-attachment: fixed;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Film-grain texture overlay */
@@ -72,6 +75,18 @@ a { color: var(--gold); text-decoration: none; }
 .container {
   width: min(1180px, 92vw);
   margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- Typography ---------- */
@@ -138,6 +153,13 @@ body.is-home .nav-toggle {
   background: rgba(12, 12, 16, 0.42);
   border-color: rgba(239, 233, 221, 0.25);
   color: #fff;
+}
+/* Once past the hero, solidify the header so nav stays readable over content */
+body.is-home .site-header.scrolled {
+  background: rgba(12, 12, 16, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
 }
 
 .site-header .container {
@@ -225,7 +247,7 @@ body.is-home .nav-toggle {
 .page-hero::before {
   content: "";
   position: absolute;
-  inset: 0 -40px auto -40px;
+  inset: 0 0 auto 0;
   height: 220px;
   background: radial-gradient(620px 220px at 22% 0, rgba(224, 170, 77, 0.09), transparent 70%);
   pointer-events: none;
@@ -466,10 +488,12 @@ body.is-home .nav-toggle {
   color: var(--gold);
   margin: 0.2rem 0 1rem;
 }
+.team-card > div { min-width: 0; }
 .team-card a.contact {
   display: block;
   font-size: 0.98rem;
   color: var(--ink);
+  overflow-wrap: anywhere;
   transition: color 0.25s ease;
 }
 .team-card a.contact:hover { color: var(--gold-bright); }
@@ -679,6 +703,11 @@ body.is-home .nav-toggle {
 @media (max-width: 920px) {
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery { columns: 2; }
+}
+
+/* Smoother scrolling on touch devices: fixed attachment is janky on iOS */
+@media (max-width: 1024px), (hover: none) {
+  body { background-attachment: scroll; }
 }
 
 @media (max-width: 760px) {

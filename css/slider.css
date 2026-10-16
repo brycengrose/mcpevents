@@ -202,11 +202,32 @@ body.is-home .slider-counter {
   .ticker-track { animation: none; }
 }
 
+/* --- Responsive hero fitting -------------------------------------------------
+   Full-screen cinematic hero only where the viewport can actually show it.
+   Narrow / portrait / squarish viewports get a wide band that matches the
+   photo's aspect → no heavy crop, no giant zoomed images. */
+@media (max-width: 640px), (max-aspect-ratio: 31 / 20) {
+  .hero-slider {
+    height: auto;
+    aspect-ratio: 16 / 10.4;
+    min-height: 240px;
+  }
+}
+/* Short viewports (landscape phones, small windows): fit the viewport exactly
+   so the caption never falls below the fold */
+@media (max-height: 500px) {
+  .hero-slider {
+    height: 100vh;
+    height: 100svh;
+    aspect-ratio: auto;
+    min-height: 300px;
+  }
+}
+
 /* Small screens: move arrows next to dots, tighten */
 @media (max-width: 640px) {
   body.is-home .slider-arrows { top: calc(clamp(1.4rem, 4vw, 2.4rem) + 3.6rem); }
   .hero-slider .slide.logo-slide img { width: min(95%, 625px); }
-  .hero-slider { height: auto; aspect-ratio: 16 / 10.4; min-height: 220px; }
   .slider-arrows { bottom: auto; top: clamp(1.4rem, 4vw, 2.4rem); right: 1rem; }
   body.is-home .slider-counter,
   .slider-counter {

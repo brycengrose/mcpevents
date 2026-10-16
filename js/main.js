@@ -27,6 +27,20 @@
     });
   }
 
+  /* ---------- Homepage: solidify header after the hero ---------- */
+  if (document.body.classList.contains("is-home")) {
+    var homeHeader = document.querySelector(".site-header");
+    var heroEl = document.querySelector(".hero-slider");
+    if (homeHeader && heroEl) {
+      var updateHeader = function () {
+        homeHeader.classList.toggle("scrolled", window.scrollY > Math.max(heroEl.offsetHeight - 120, 140));
+      };
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      window.addEventListener("resize", updateHeader, { passive: true });
+      updateHeader();
+    }
+  }
+
   /* ---------- Homepage hero slider ---------- */
   var slider = document.querySelector("[data-slider]");
   if (slider) {
